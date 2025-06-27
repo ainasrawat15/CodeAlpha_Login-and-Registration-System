@@ -26,6 +26,7 @@ void registeruser(){
      cin>>username;
      if(userexists(username)){
         cout<<"username already exists. try different one"<<endl;
+         return;
      }
      cout<<"enter password";
      cin>>password;
@@ -44,7 +45,7 @@ void loginuser(){
     cout<<"enter password:";
     cin>>password;
 
-    ifstream file("users.txt");
+    ifstream file("user.txt");
     string line;
     bool success=false;
 
@@ -56,13 +57,14 @@ void loginuser(){
             success=true;
             break;
         }
-    if(success){
+    }
+    if (success){
         cout<<"login successful! welcome,"<<username<<endl;
     }
     else{
         cout<<"login failed! username or password is incorrect"<<endl;
     }
-    }
+    
 }
 
 //main code
@@ -79,7 +81,9 @@ do{
 
     switch(choice){
         case 1:registeruser();
+        break;
         case 2:loginuser();
+        break;
         case 3:cout<<"-----Exiting-----";
         break;
         default :
